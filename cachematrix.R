@@ -113,8 +113,8 @@
 ## makeCacheMatrix():
 ##
 ## Usage: makeCacheMatrix(x=matrix(), private=TRUE, ...)
-## Input Variable(s) : A square matrix
-##                     A logical vector to the return method
+## Input Variable(s) : x = square matrix (default value=matrix())
+##                     private = logical vector (default value=TRUE)
 ## Return Variable(s): A list of the 4 methods. 
 ##                     privateMatrix = List available for the children functions
 ##                     publicMatrix  = List available for all the function in
