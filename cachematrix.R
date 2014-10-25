@@ -115,7 +115,10 @@
 ## Usage: makeCacheMatrix(x=matrix(), private=TRUE, ...)
 ## Input Variable(s) : A square matrix
 ##                     A logical vector to the return method
-## Return Variable(s): A list of the 4 methods
+## Return Variable(s): A list of the 4 methods. 
+##                     privateMatrix = List available for the children functions
+##                     publicMatrix  = List available for all the function in
+##                                     the global environment.
 ## Variables: inv = Inverse of the input matrix (default=NULL)
 ##            x   = Input matrix (x must be a square matrix)
 
@@ -149,14 +152,14 @@ makeCacheMatrix <- function(x = matrix(), private=TRUE, ...) {
         getinv <- function() inv
         
         # Return the functions in a list.
-        privateList <- list(set = set, 
+        privateMatrix <- list(set = set, 
                             get = get, 
                             setinv = setinv,
                             getinv = getinv) 
         if(private == TRUE) {
-                    privateList     
+                    privateMatrix    
         } else if (private == FALSE) {
-                basicMatrix <<- privateList 
+                publicMatrix <<- privateMatrix 
         } else {
                 message("USAGE: makeCacheMatrix(x = matrix(), private=TRUE, ...)")
                 stop("private value unknown")
