@@ -81,7 +81,7 @@
 ##      [1] "entering test subfunction 1:"
 ##      Error in cacheSolve(listmethods) : object 'listmethods' not found 
 ##
-##      3.2 - PRIVATE=FALSE
+##      3.2 - private=FALSE
 ##
 ##      R > source('~/Documents/ProgrammingAssignment2/cachematrix.R')
 ##      R > testNoList1 <- function() {
@@ -113,11 +113,11 @@
 ## makeCacheMatrix():
 ##
 ## Usage: makeCacheMatrix(x=matrix(), private=TRUE, ...)
-## Input Variable(s) : x = square matrix (default value=matrix())
+## Input Variable(s) : x       = square matrix (default value=matrix())
 ##                     private = logical vector (default value=TRUE)
-## Return Variable(s): A list of the 4 methods. 
-##                     privateMatrix = List available for the children functions
-##                     publicMatrix  = List available for all the function in
+## Return Variable(s): A list of the 4 methods returned as: 
+##                     privateMatrix = List accessiblee by the children 
+##                     publicMatrix  = List accessible by all the functions in
 ##                                     the global environment.
 ## Variables: inv = Inverse of the input matrix (default=NULL)
 ##            x   = Input matrix (x must be a square matrix)
@@ -129,13 +129,13 @@ makeCacheMatrix <- function(x = matrix(), private=TRUE, ...) {
         
         # Is x a matrix?
         if (!(is.matrix(x))) {
-                message("USAGE: makeCacheMatrix(x = matrix(), private=TRUE, ...)")
+                message("USAGE: makeCacheMatrix(x=matrix(),private=TRUE,...)")
                 stop("x is not matrix.")
         }
         
         # Is x a square matrix?
         if (nrow(x) != ncol(x)) {
-                message("USAGE: makeCacheMatrix(x = matrix(), private=TRUE, ...)")
+                message("USAGE: makeCacheMatrix(x=matrix(),private=TRUE,...)")
                 stop("x is not a square matrix. Inversion is not possible")
         }
        
@@ -161,14 +161,15 @@ makeCacheMatrix <- function(x = matrix(), private=TRUE, ...) {
         } else if (private == FALSE) {
                 publicMatrix <<- privateMatrix 
         } else {
-                message("USAGE: makeCacheMatrix(x = matrix(), private=TRUE, ...)")
+                message("USAGE: makeCacheMatrix(x=matrix(),private=TRUE,...)")
                 stop("private value unknown")
         }
 }
 
 ## CacheSolve():
 ##
-## Usage: cacheSolve(baseMatrix)
+## Usage: cacheSolve(privateMatrix)
+##        cacheSolve(publicMatrix)
 ## Input Variable(s) : A list of the contructor methods.
 ## Return Variable(s): An inverse of a square matrix.
 ## Variables: m    = The inverse of the input matrix from the cache.
