@@ -170,7 +170,8 @@ makeCacheMatrix <- function(x = matrix(), private=TRUE, ...) {
 ##
 ## Usage: cacheSolve(privateMatrix)
 ##        cacheSolve(publicMatrix)
-## Input Variable(s) : A list of the contructor methods.
+## Input Variable(s) : The list of the methods. It can be defined either as
+##                     publicMatrix or privateMatrix. 
 ## Return Variable(s): An inverse of a square matrix.
 ## Variables: m    = The inverse of the input matrix from the cache.
 ##            data = The input matrix from the cache.
@@ -187,7 +188,8 @@ cacheSolve <- function(x,...) {
                 return(m)
         }
         
-        # Inv is not in the cache, compute the inverse of the matrix.
+        # Inv is not in the cache, compute the inverse of the matrix, assign it
+        # to m and set the cache. 
         m <- solve(data)
         x$setinv(m)
         m
