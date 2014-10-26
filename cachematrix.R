@@ -28,7 +28,7 @@
 ##      computed, it is initialized to NULL.
 ##        It is important to note that the argument must be a square matrix or 
 ##      the script will not be able to compute the inverse. This is why there
-##      is two error detections test conditions. 
+##      is two error detection conditions. 
 ##      If the argument is not a matrix or not a square matrix, the program 
 ##      will stop and report an error message.
 ##        The set() and get() methods will manipulate the value of the matrix. 
